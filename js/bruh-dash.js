@@ -25,7 +25,7 @@ global.bruhdash = {
       if (arr[i]===value){
         return i;
       }
-    }
+    }return -1;
   },
 
   // returns the index of the first matching element from right to left
@@ -74,8 +74,8 @@ global.bruhdash = {
   // returns a slice of array with n elements dropped from the beignning
   drop: function(arr, n){
     newArr = [];
-    console.log(arr);
-    console.log(n);
+    // console.log(arr);
+    // console.log(n);
     if (n === undefined){
       for (i=1;i<arr.length;i++){
         newArr[newArr.length] = arr[i];
@@ -85,39 +85,109 @@ global.bruhdash = {
         newArr[newArr.length] = arr[i];
       }
   } 
-    console.log('this is the new arr' +newArr);
+    // console.log('this is the new arr' +newArr);
 
     return newArr;
   },
 
   // returns a slice of array with n elements dropped from the end
-  dropRight: function() {
+  dropRight: function(arr, n) {
+    newArr = [];
+    // console.log(arr);
+    // console.log(n);
+    if (n === undefined){
+      for (i=0;i<arr.length-1;i++){
+        newArr[newArr.length] = arr[i];
+      }
+    }else{
+      for (i=0;i<arr.length-n;i++){
+        newArr[newArr.length] = arr[i];
+      }
+  } 
+    // console.log('this is the new arr' +newArr);
 
+    return newArr;
   },
 
   // creates a slice of an array with n elements taken from the beginning
-  take: function () {
+  take: function (arr, n) {
+    // console.log(arr,n);
+    newArr = [];
+    if (n===undefined){
+      newArr[newArr.length] = arr[0];
+    }else if(n>arr.length){
+      for (i=0;i<arr.length;i++){
+        newArr[newArr.length] = arr[i];
+      }
+    }else{
+      for (i=0;i<n;i++){
+        newArr[newArr.length]=arr[i];
+      }
+    }
+    // console.log(newArr);
+    // console.log('function run');
 
+    return newArr;
   },
 
   // creates a slice of an array with n elements taken from the end
-  takeRight: function () {
+  takeRight: function (arr, n) {
+    // console.log(arr,n);
+    newArr = [];
+    if (n===undefined){
+      newArr[newArr.length] = arr[arr.length-1];
+    }else if(n>arr.length){
+      for (i=0;i<arr.length;i++){
+        newArr[newArr.length] = arr[i];
+      }
+    }else if(n==0){
+      return newArr;
+    }else{
+      for (i=n-1;i<arr.length;i++){
+        newArr[newArr.length]=arr[i];
+      }
+    }
+    // console.log(newArr);
+    // console.log('function run');
 
+    return newArr;
   },
 
   // fills elements of array with specified value from the start index
   // up to but not including the end index
-  fill: function() {
-
+  fill: function(arr, value, n, m) {
+    if (n===undefined && m===undefined){
+      for (i=0;i<arr.length;i++){
+      arr[i] = value;
+      }
+    }else{
+      for (i=n;i<m;i++){
+        arr[i]=value;
+      }
+    }
+    return arr;
   },
 
   // removes all given values from an array
-  pull: function () {
+  pull: function (arr,...daArgs) {
+    console.log(arr);
+    console.log(daArgs);
 
+    for(i=0;i<arr.length;i++){
+      for (j=0;j<daArgs.length;j++){
+        if (arr[i]===daArgs[j]){
+          arr[i]='found';
+        }else{
+          arr[i]=arr[i];
+        }
+      }
+      }
+      console.log(arr);
+      return arr;
   },
 
   // removes elements of an array corresponding to the given indices
-  pullAt: function () {
+  pullAt: function (arr, n) {
 
   },
 
@@ -127,7 +197,7 @@ global.bruhdash = {
   },
 
   // returns an array with specified values excluded
-  difference: function() {
+  difference: function(arr, values) {
 
   },
 
