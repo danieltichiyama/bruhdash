@@ -195,8 +195,8 @@ global.bruhdash = {
 
   // removes elements of an array corresponding to the given indices
   pullAt: function (arr, naughtyArr) {
-    console.log(arr+" this is the arr.");
-    console.log(naughtyArr+" this is the naughtyArr.");
+    // console.log(arr+" this is the arr.");
+    // console.log(naughtyArr+" this is the naughtyArr.");
     // debugger;
     for (i=0;i<arr.length;i++){
       var check =0;
@@ -212,7 +212,7 @@ global.bruhdash = {
       }
     }
     
-    console.log(arr);
+    // console.log(arr);
     for (i=0;i<arr.length;i++){
         if (arr[i]==='remove'){
           for (k=i;k<arr.length;k++){
