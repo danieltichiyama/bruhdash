@@ -285,12 +285,54 @@ global.bruhdash = {
 
   // creates an array of grouped elements
   zip: function () {
-
+    let numVal = [0];
+    let longestArray=0;
+    for (let i=0;i<arguments.length;i++){
+      // console.log(arguments[i].length);
+      numVal[numVal.length] = arguments[i].length;
+      // console.log(numberOfValues);
+      // console.log(numberOfValues[numberOfValues.length],numberOfValues[numberOfValues.length-1])
+      if (numVal[numVal.length-1]>numVal[numVal.length-2]){
+        longestArray = numVal[numVal.length-1];
+        // console.log(longestArray);
+      }else{
+        longestArray = longestArray;
+      }
+    }
+    // console.log (longestArray);
+    // console.log(arguments);
+    let newArr = [];
+    // debugger;
+    for (let i=0;i<longestArray;i++){
+      let subArr = [];
+      for (let j=0;j<arguments.length;j++){
+        subArr[subArr.length] = arguments[j][i];
+        // console.log(arguments[j][i]+" is being accessed now.");
+      }
+      // console.log(subArr);
+      newArr[newArr.length] = subArr;
+    } 
+    return newArr;
   },
 
   // creates an array of grouped elements in their pre-zip configuration
-  unzip: function () {
-
+  unzip: function (arr) {
+    console.log(arr);
+    console.log(arr.length);
+    newArr=[];
+    // debugger;
+    for (i=0;i<arr.length;i++){
+      console.log (arr[i] +" is the arr.");
+      subArr = [];
+      for (j=0;j<arr.length;j++){
+        subArr[subArr.length]=arr[j][i];
+        console.log(arr[j][i]+ "is the value at arr"+j+"]["+i);
+      }
+      console.log(subArr +"this is the subArr.")
+      newArr[newArr.length]=subArr;
+    }
+    newArr.length=newArr.length-1;
+    return newArr;
   },
 
   // creates an array of elements into groups of length of specified size
