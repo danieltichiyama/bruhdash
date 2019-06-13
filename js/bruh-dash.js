@@ -170,35 +170,113 @@ global.bruhdash = {
 
   // removes all given values from an array
   pull: function (arr,...daArgs) {
-    console.log(arr);
-    console.log(daArgs);
-
-    for(i=0;i<arr.length;i++){
+    // console.log(arr);
+    // console.log(daArgs);
+    for (i=0;i<arr.length;i++){
       for (j=0;j<daArgs.length;j++){
         if (arr[i]===daArgs[j]){
-          arr[i]='found';
+          for (k=i;k<arr.length;k++){
+            arr[k]=arr[k+1];
+          }
+          arr.length =arr.length-1;
+          if (i===0){
+            i=0;
+          }else{
+            i--;
+          }
         }else{
-          arr[i]=arr[i];
+          arr[i];
         }
       }
-      }
-      console.log(arr);
-      return arr;
+    }
+    // console.log (arr);
+    return arr;
   },
 
   // removes elements of an array corresponding to the given indices
-  pullAt: function (arr, n) {
+  pullAt: function (arr, naughtyArr) {
+    console.log(arr+" this is the arr.");
+    console.log(naughtyArr+" this is the naughtyArr.");
+    // debugger;
+    for (i=0;i<arr.length;i++){
+      var check =0;
+      for (j=0;j<naughtyArr.length;j++){
+        if (i===naughtyArr[j]){
+          check = 0;
+          break;
+        }else{
+          check = 1;
+        }
+      }if (check ===1){
+       arr[i] = 'remove'; 
+      }
+    }
+    
+    console.log(arr);
+    for (i=0;i<arr.length;i++){
+        if (arr[i]==='remove'){
+          for (k=i;k<arr.length;k++){
+            arr[k]=arr[k+1];
+          }
+          arr.length =arr.length-1;
+          if (i===0){
+            i=0;
+          }else{
+            i--;
+          }
+        }else{
+          arr[i];
+        }
+    }
+    // console.log (arr);
+    return arr;
 
   },
 
   // creates an array excluding all the specified values
-  without: function() {
+  without: function(arr, ...daArgs) {
+    // console.log(arr);
+    // console.log(daArgs);
+    newArr=[];
 
+    for(i=0;i<arr.length;i++){
+      var checker = 0;
+      for (j=0;j<daArgs.length;j++){
+        if (arr[i]===daArgs[j]){
+          checker = 1;
+          break;
+        }
+      }
+      if (checker === 0){
+        newArr[newArr.length]=arr[i];
+      }
+    }
+    // console.log(newArr);
+      return newArr;
   },
 
   // returns an array with specified values excluded
-  difference: function(arr, values) {
+  difference: function(arr, naughtyArr) {
+    // console.log(arr);
+    // console.log(naughtyArr);
+    var newArr = [];
 
+    for (i=0;i<arr.length;i++){
+      var checker = 0;
+      for (j=0;j<naughtyArr.length;j++){
+        if (arr[i]===naughtyArr[j]){
+        checker = 1;
+        // console.log (naughtyArr[j]+' is being checked now.')
+        // console.log('This is a naughty value!');
+      }
+    }
+      if (checker === 0){
+        newArr[newArr.length]=arr[i];
+      }
+      // console.log(newArr);
+    }
+
+    return newArr;
   },
 
   /*******************
