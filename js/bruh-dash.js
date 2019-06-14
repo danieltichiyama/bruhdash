@@ -337,8 +337,14 @@ global.bruhdash = {
 
   // creates an array of elements into groups of length of specified size
   chunk: function(arr, size){
-    console.log(arr, size);
-    
+    let times = arr.length/size;
+    let isThereARemainder = 0;
+    let remainder = arr.length%size;
+    if (remainder !==0){
+      isThereARemainder = 1;
+    }
+
+    // console.log(arr, arr.length, size,times,remainder);
     let newArr = [];
     if (arr.length ===0){
       return newArr;
@@ -346,18 +352,31 @@ global.bruhdash = {
     if (size===undefined || size===0){
       return newArr;
     }
-    let subArr = [];
 //I need to create a variable that is assigned to the number of times the arr can be divided by the size, for example an array of 5 items can be divided by 2 2.5 times.  It also needs to account for the fact that if the division creates a remainder, it automatically goes up an integer (i.e. 5/2 = 2.5, so it =3; or 10/6 = 1.666, so it goes up to 2).  Then I can deal with the last array that will have undefined values in it (which will have to be based on the remainder **use % operator** OR I can use the % operator to simply fill in the last array with how much is left over, if there is any left over...)  in a for loop i<5/2... will it yield results up to 2? or will it go to 3 because 2 is still smaller than 2.5.....hmm....)
-    for (i=0;i<size;i++){
-      subArr[subArr.length]=arr[i];
-    }
-    for (i=size;i<arr.length;i++){
-      arr[i-size]=arr[i];
-    }
-    arr.length = arr.length-size;
+    // debugger;
+    for (let i=0;i<times-isThereARemainder;i++){
+      let subArr = [];
+      for (let i=0;i<size;i++){
+        subArr[subArr.length]=arr[i];
+      }
+      for (let i=size;i<arr.length;i++){
+        arr[i-size]=arr[i];
+      }
+      arr.length = arr.length-size;
 
-    console.log(subArr);
-    console.log(arr);
+      // console.log(subArr);
+      // console.log(arr);
+      newArr[newArr.length] = subArr;
+      // console.log(newArr +"this is the newArr")
+    }
+
+    // console.log(arr+"this is the arr after all that for loops.");
+
+    if (remainder!==0){
+      newArr[newArr.length] = arr;
+    }
+    // console.log(newArr + 'this is the result');
+
 
     return newArr;
 
