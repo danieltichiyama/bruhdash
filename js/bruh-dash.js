@@ -317,18 +317,18 @@ global.bruhdash = {
 
   // creates an array of grouped elements in their pre-zip configuration
   unzip: function (arr) {
-    console.log(arr);
-    console.log(arr.length);
+    // console.log(arr);
+    // console.log(arr.length);
     newArr=[];
     // debugger;
     for (i=0;i<arr.length;i++){
-      console.log (arr[i] +" is the arr.");
+      // console.log (arr[i] +" is the arr.");
       subArr = [];
       for (j=0;j<arr.length;j++){
         subArr[subArr.length]=arr[j][i];
-        console.log(arr[j][i]+ "is the value at arr"+j+"]["+i);
+        // console.log(arr[j][i]+ "is the value at arr"+j+"]["+i);
       }
-      console.log(subArr +"this is the subArr.")
+      // console.log(subArr +"this is the subArr.")
       newArr[newArr.length]=subArr;
     }
     newArr.length=newArr.length-1;
@@ -336,7 +336,30 @@ global.bruhdash = {
   },
 
   // creates an array of elements into groups of length of specified size
-  chunk: function(){
+  chunk: function(arr, size){
+    console.log(arr, size);
+    
+    let newArr = [];
+    if (arr.length ===0){
+      return newArr;
+    }
+    if (size===undefined || size===0){
+      return newArr;
+    }
+    let subArr = [];
+//I need to create a variable that is assigned to the number of times the arr can be divided by the size, for example an array of 5 items can be divided by 2 2.5 times.  It also needs to account for the fact that if the division creates a remainder, it automatically goes up an integer (i.e. 5/2 = 2.5, so it =3; or 10/6 = 1.666, so it goes up to 2).  Then I can deal with the last array that will have undefined values in it (which will have to be based on the remainder **use % operator** OR I can use the % operator to simply fill in the last array with how much is left over, if there is any left over...)  in a for loop i<5/2... will it yield results up to 2? or will it go to 3 because 2 is still smaller than 2.5.....hmm....)
+    for (i=0;i<size;i++){
+      subArr[subArr.length]=arr[i];
+    }
+    for (i=size;i<arr.length;i++){
+      arr[i-size]=arr[i];
+    }
+    arr.length = arr.length-size;
+
+    console.log(subArr);
+    console.log(arr);
+
+    return newArr;
 
   },
 
