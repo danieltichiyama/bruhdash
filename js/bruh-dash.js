@@ -386,12 +386,10 @@ global.bruhdash = {
   forEach: function(coll, iteratee) {
     console.log(coll);
     console.log(iteratee);
-      var result = [];
       // debugger;
       for (key in coll){
         iteratee(coll[key],key);
       }
-      return result;
   },
 
   // creates an array of values by running each element in collection thru the iteratee
