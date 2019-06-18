@@ -352,7 +352,6 @@ global.bruhdash = {
     if (size===undefined || size===0){
       return newArr;
     }
-//I need to create a variable that is assigned to the number of times the arr can be divided by the size, for example an array of 5 items can be divided by 2 2.5 times.  It also needs to account for the fact that if the division creates a remainder, it automatically goes up an integer (i.e. 5/2 = 2.5, so it =3; or 10/6 = 1.666, so it goes up to 2).  Then I can deal with the last array that will have undefined values in it (which will have to be based on the remainder **use % operator** OR I can use the % operator to simply fill in the last array with how much is left over, if there is any left over...)  in a for loop i<5/2... will it yield results up to 2? or will it go to 3 because 2 is still smaller than 2.5.....hmm....)
     // debugger;
     for (let i=0;i<times-isThereARemainder;i++){
       let subArr = [];
@@ -385,7 +384,14 @@ global.bruhdash = {
   // iterates over elements of a collection and invokes iteratee for each element
   // Note: this should work for arrays and objects
   forEach: function(coll, iteratee) {
-    console.log(arguments);
+    console.log(coll);
+    console.log(iteratee);
+      var result = [];
+      // debugger;
+      for (key in coll){
+        iteratee(coll[key],key);
+      }
+      return result;
   },
 
   // creates an array of values by running each element in collection thru the iteratee
