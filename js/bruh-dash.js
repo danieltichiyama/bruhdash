@@ -395,8 +395,8 @@ global.bruhdash = {
   // creates an array of values by running each element in collection thru the iteratee
   // Note: this should work for arrays and objects
   map: function(coll, iteratee) {
-    console.log(coll);
-    console.log(iteratee);
+    // console.log(coll);
+    // console.log(iteratee);
     var result = [];
       // debugger;
       for (key in coll){
@@ -412,14 +412,34 @@ global.bruhdash = {
 
   // iterates over elements of a collection and returns all elements that the predicate returns truthy for
   // Note: this should work for arrays and objects
-  filter: function() {
+  filter: function(coll,func) {
+    // console.log(coll, func);
+    newArr = [];
 
+    for (var key in coll){
+      // console.log(coll[key]);
+      if (func(coll[key])===true){
+        // console.log(func(coll[key]));
+        newArr[newArr.length]=coll[key];
+      }
+      // console.log(newArr);
+    }
+    return newArr;
   },
 
   // Reduces the collection to a value which is the accumulated result of running each element
   // in the collection through an iteratee
   // Note: this should work for arrays and objects
-  reduce: function() {
-    
+  reduce: function(coll, func) {
+    // console.log(coll,func);
+    var sum=0;
+    var total = 0;
+    for (var key in coll){
+      // console.log(coll[key]);
+      total += func(sum,coll[key]);
+      // console.log(sum);
+    }
+    // console.log(total);
+    return total; 
   }
 };
