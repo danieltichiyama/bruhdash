@@ -384,8 +384,8 @@ global.bruhdash = {
   // iterates over elements of a collection and invokes iteratee for each element
   // Note: this should work for arrays and objects
   forEach: function(coll, iteratee) {
-    console.log(coll);
-    console.log(iteratee);
+    // console.log(coll);
+    // console.log(iteratee);
       // debugger;
       for (key in coll){
         iteratee(coll[key],key);
@@ -394,8 +394,16 @@ global.bruhdash = {
 
   // creates an array of values by running each element in collection thru the iteratee
   // Note: this should work for arrays and objects
-  map: function() {
-
+  map: function(coll, iteratee) {
+    console.log(coll);
+    console.log(iteratee);
+    var result = [];
+      // debugger;
+      for (key in coll){
+        result.push(iteratee(coll[key]));
+        
+      }
+      return result;
   },
 
   /*************************
